@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Fetch API post example</title>
+	</head>
+	<body>
+		<form id="form" method="post">
+			<input type="text" id="name" placeholder="Adiniz"/>
+			<input type="text" id="body" placeholder="Mesleginiz"/>
+			<input type="submit" value="Gonder"/>
+		</form>
+		<div id="results">
+
+		</div>
+	</body>
+	<script>
+		var form = document.getElementById('form')
+
+		form.addEventListener('submit',function(e){
+			// auto submission of the form
+
+			e.preventDefault()
+
+			var name = document.getElementById('name').value
+			var body = document.getElementById('body').value
+
+			// fetch post req
+
+			fetch("https://reqres.in/api/users",{
+				method:'POST',
+				body:JSON.stringify({
+					title:name,
+					body:body
+				}),
+				headers:{
+					"Content-Type":"application/json; charset=UTF-8"
+				}
+			})
+			.then(function(response){
+				return response.json()
+			})
+			.then(function(data){
+				console.log(data)
+				var results = document.getElementById('results')
+
+				results.innerHTML = "Sayin Semi, "+data.id+" numarali kaydiniz olusturulmustur"
+			})
+
+
+		})
+	</script>
+</html>
