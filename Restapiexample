@@ -43,7 +43,7 @@
 				console.log(data)
 				var results = document.getElementById('results')
 
-				results.innerHTML = "Sayin Semi, "+data.id+" numarali kaydiniz olusturulmustur"
+				results.innerHTML = "Mr. User, "+data.id+" registered"
 			})
 
 
